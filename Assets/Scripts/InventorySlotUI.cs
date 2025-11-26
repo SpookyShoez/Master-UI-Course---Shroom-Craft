@@ -19,6 +19,8 @@ public class InventorySlotUI : MonoBehaviour
         icon.gameObject.SetActive(newSlot != null);
         if (newSlot == null)
         {
+            stackCountText.gameObject.SetActive(false);
+            frame.sprite = spriteOneItem;
             return;
         }
         icon.sprite = newSlot.item.sprite;

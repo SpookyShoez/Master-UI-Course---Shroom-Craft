@@ -37,7 +37,14 @@ public class InventoryUI : MonoBehaviour
 
         void InventoryOpened()
     {
-        var items = InventoryManager.instance.inventory;
+       ChangeFilter(0);
+    }
+
+    public void ChangeFilter(int id)
+    {
+        ItemCategory category = (ItemCategory)id;
+
+        var items = InventoryManager.instance.inventory.FindAll(x => x.item.category == category);
         for (int i = 0; i < inventorySlots.Length; i++) 
         {
             bool isEmpty = i >= items.Count;
