@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    List<Item> inventory = new List<Item>();
+    public List<InventorySlot> inventory = new List<InventorySlot>();
 
     private void Awake()
     {
@@ -13,7 +13,14 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void AddItem(Item newItem) {
-        inventory.Add(newItem);
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].item == newItem && inventory[i].item.stackable)
+            {
+                inventory[i].count++;
+                return;
+            }
+        }
+        inventory.Add(new InventorySlot(newItem));
     }
- 
 }

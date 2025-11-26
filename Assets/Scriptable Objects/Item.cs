@@ -13,6 +13,7 @@ public class Item : ScriptableObject
   public int hp;
   public Sprite sprite;
   public ItemCategory category;
+  public bool stackable = false;
 }
 
 public enum ItemCategory

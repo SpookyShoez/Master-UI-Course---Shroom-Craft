@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d02e17a4777503047a571a38519903c3, type: 3}
-  m_Name: New Item
+  m_Name: Stick
   m_EditorClassIdentifier: 
-  itemName: Weapon
-  attack: 15
+  itemName: Stick
+  attack: 5
   defense: 0
   hp: 0
-  sprite: {fileID: 21300000, guid: d7e31ad43653e4bbea4d46db137a718b, type: 3}
+  sprite: {fileID: 21300000, guid: 0c0fe31041e555942bac33f158a944a5, type: 3}
   category: 2
+  stackable: 1
