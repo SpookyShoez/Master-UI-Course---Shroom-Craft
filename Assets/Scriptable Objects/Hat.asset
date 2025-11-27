@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02e17a4777503047a571a38519903c3, type: 3}
   m_Name: Hat
   m_EditorClassIdentifier: 
-  itemName: Hat
+  itemName: Wizard Hat
   attack: 0
   defense: 0
   hp: 10

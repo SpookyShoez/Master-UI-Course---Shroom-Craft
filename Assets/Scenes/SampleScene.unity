@@ -3240,6 +3240,11 @@ MonoBehaviour:
   inventoryGo: {fileID: 1907820547}
   inventorySlotsGrid: {fileID: 1192374686}
   categoryFiltersTabs: {fileID: 1891913735}
+  craftingSlots: []
+  craftingResult: {fileID: 0}
+  equipmentWeapon: {fileID: 0}
+  equipmentHelmet: {fileID: 0}
+  equipmentChest: {fileID: 0}
 --- !u!1 &809170815
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,10 +5397,10 @@ RectTransform:
   - {fileID: 1187303707}
   m_Father: {fileID: 777261404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70.566086, y: 87.71898}
-  m_SizeDelta: {x: 198.532, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -710.5661, y: 447.719}
+  m_SizeDelta: {x: 198.53198, y: 0}
   m_Pivot: {x: -0.000000027939677, y: 1.0000001}
 --- !u!114 &1231026810
 MonoBehaviour:

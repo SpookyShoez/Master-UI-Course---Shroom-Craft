@@ -9,6 +9,13 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject inventorySlotsGrid;
     [SerializeField] TabsManager categoryFiltersTabs;
 
+    [Header("Other InventorySlotUIs")]
+    [SerializeField] InventorySlotUI[] craftingSlots = null;
+    [SerializeField] InventorySlotUI craftingResult = null;
+    [SerializeField] InventorySlotUI equipmentWeapon = null;
+    [SerializeField] InventorySlotUI equipmentHelmet = null;
+    [SerializeField] InventorySlotUI equipmentChest = null;
+
     //Temp
     InventorySlotUI[] inventorySlots;
 
@@ -40,6 +47,16 @@ public class InventoryUI : MonoBehaviour
     {
        ChangeFilter(0);
        categoryFiltersTabs.SelectTab(0);
+       
+       // Reset
+       foreach (var craftingSlot in craftingSlots)
+       {
+            craftingSlot.Initialize(null);
+       }
+       craftingResult.Initialize(null);
+       equipmentWeapon.Initialize(InventoryManager.instance.equipmentWeapon);
+       equipmentHelmet.Initialize(InventoryManager.instance.equipmentHelmet);
+       equipmentChest.Initialize(InventoryManager.instance.equipmentChest);
     }
 
     public void ChangeFilter(int id) {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class InventorySlotUI : MonoBehaviour
+public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Components")]
     [SerializeField] Image icon;
@@ -15,7 +16,11 @@ public class InventorySlotUI : MonoBehaviour
     [SerializeField] Sprite spriteOneItem;
     [SerializeField] Sprite spriteMultipleItems;
 
+    // Temp
+    InventorySlot slot;
+
     public void Initialize(InventorySlot newSlot) {
+        slot = newSlot;
         icon.gameObject.SetActive(newSlot != null);
         if (newSlot == null)
         {
@@ -27,6 +32,18 @@ public class InventorySlotUI : MonoBehaviour
         stackCountText.text = newSlot.count.ToString();
         stackCountText.gameObject.SetActive(newSlot.count > 1);
         frame.sprite = newSlot.count > 1 ? spriteMultipleItems : spriteOneItem;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (slot != null) {
+        ToolTipInstance.instance.Show(slot);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ToolTipInstance.instance.Hide();
     }
 }
 
