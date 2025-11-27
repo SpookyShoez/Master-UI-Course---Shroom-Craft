@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
     [Header("Components")]
     [SerializeField] GameObject inventoryGo;
     [SerializeField] GameObject inventorySlotsGrid;
+    [SerializeField] TabsManager categoryFiltersTabs;
 
     //Temp
     InventorySlotUI[] inventorySlots;
@@ -38,17 +39,21 @@ public class InventoryUI : MonoBehaviour
         void InventoryOpened()
     {
        ChangeFilter(0);
+       categoryFiltersTabs.SelectTab(0);
     }
 
-    public void ChangeFilter(int id)
-    {
-        ItemCategory category = (ItemCategory)id;
+    public void ChangeFilter(int id) {
+        var items = InventoryManager.instance.inventory;
+        if (id != 0) {
+        ItemCategory category = (ItemCategory)(id - 1);
+        items = InventoryManager.instance.inventory.FindAll(x => x.item.category == category);
 
-        var items = InventoryManager.instance.inventory.FindAll(x => x.item.category == category);
+        }
+        
         for (int i = 0; i < inventorySlots.Length; i++) 
         {
             bool isEmpty = i >= items.Count;
             inventorySlots[i].Initialize(isEmpty ? null : items[i]);
         }
     }
-}
+ }

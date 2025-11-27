@@ -30,4 +30,9 @@ public class TabsManager : MonoBehaviour
         selectedTab.Select();
         onTabSelected?.Invoke(selectedTab.transform.GetSiblingIndex());
     }
+    public void SelectTab(int selectedTabIndex)
+    {
+        SelectTab(tabs[selectedTabIndex]);
+
+    }
 }
