@@ -43,34 +43,45 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-        void InventoryOpened()
+    void InventoryOpened()
     {
-       ChangeFilter(0);
-       categoryFiltersTabs.SelectTab(0);
-       
-       // Reset
-       foreach (var craftingSlot in craftingSlots)
-       {
+        ChangeFilter(0);
+        categoryFiltersTabs.SelectTab(0);
+
+        // Reset
+        foreach (var craftingSlot in craftingSlots)
+        {
             craftingSlot.Initialize(null);
-       }
-       craftingResult.Initialize(null);
-       equipmentWeapon.Initialize(InventoryManager.instance.equipmentWeapon);
-       equipmentHelmet.Initialize(InventoryManager.instance.equipmentHelmet);
-       equipmentChest.Initialize(InventoryManager.instance.equipmentChest);
+        }
+        craftingResult.Initialize(null);
+        equipmentWeapon.Initialize(InventoryManager.instance.equipmentWeapon);
+        equipmentHelmet.Initialize(InventoryManager.instance.equipmentHelmet);
+        equipmentChest.Initialize(InventoryManager.instance.equipmentChest);
     }
 
-    public void ChangeFilter(int id) {
+    public void ChangeFilter(int id)
+    {
         var items = InventoryManager.instance.inventory;
-        if (id != 0) {
-        ItemCategory category = (ItemCategory)(id - 1);
-        items = InventoryManager.instance.inventory.FindAll(x => x.item.category == category);
+        if (id != 0)
+        {
+            ItemCategory category = (ItemCategory)(id - 1);
+            items = InventoryManager.instance.inventory.FindAll(x => x.item.category == category);
 
         }
-        
-        for (int i = 0; i < inventorySlots.Length; i++) 
+
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             bool isEmpty = i >= items.Count;
             inventorySlots[i].Initialize(isEmpty ? null : items[i]);
         }
     }
- }
+
+    public void ChangedEquipmentSlot(InventorySlot inventorySlot, ItemCategory? itemCategory)
+    {
+        if (!itemCategory.HasValue)
+        {
+            return;
+        }
+        Debug.Log("Equipment Changed! " + itemCategory.Value.ToString());
+    }
+}

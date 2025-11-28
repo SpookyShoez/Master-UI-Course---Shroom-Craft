@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.Events;
 
 public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -13,11 +16,20 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] Image frame;
 
     [Header("Settings")]
+    [SerializeField] bool validateItemCategory;
+    [SerializeField] public ItemCategory acceptedItemCategory;
     [SerializeField] Sprite spriteOneItem;
     [SerializeField] Sprite spriteMultipleItems;
+    [SerializeField] public UnityEvent<InventorySlot, ItemCategory?> onItemChanged;
+
+    public ItemCategory? AcceptedItemCategory {
+    get {
+        return validateItemCategory ? acceptedItemCategory : null;
+        }
+    }
 
     // Temp
-    InventorySlot slot;
+    public InventorySlot slot;
 
     public void Initialize(InventorySlot newSlot) {
         slot = newSlot;
