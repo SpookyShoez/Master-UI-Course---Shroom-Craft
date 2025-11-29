@@ -41,10 +41,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             if (!acceptedItemCategory.HasValue ||
              (acceptedItemCategory.HasValue && acceptedItemCategory.Value == originalSlot.slot.item.category))
             {
+                // debug log
+                Debug.Log(acceptedItemCategory.HasValue ? "Accepted category: " + acceptedItemCategory.Value.ToString() : "Accepted any category");
                 slotUnderCursor.Initialize(originalSlot.slot);
-                originalSlot.Initialize(null);
                 slotUnderCursor.onItemChanged?.Invoke(originalSlot.slot, slotUnderCursor.AcceptedItemCategory);
                 originalSlot.onItemChanged?.Invoke(null, originalSlot.AcceptedItemCategory);
+                originalSlot.Initialize(null);
             }
         }
 
